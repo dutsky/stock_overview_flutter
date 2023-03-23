@@ -10,19 +10,25 @@ class OverviewRepository {
 
   const OverviewRepository(this._api);
 
-  Future<Overview> getOverview(String company) async {
+  Future<Overview?> getOverview(String company) async {
     final dto = await _api.getOverview(
       FunctionName.overview.value,
       company.toUpperCase(),
       AppConstants.apiKey,
     );
+
+    if (dto.Name == null) return null;
+
     return mapOverviewDtoToDomain(dto);
   }
 
   Future<List<Overview>> getOverviewList(
     Iterable<String> companies,
-  ) async =>
-      Future.wait(
-        companies.map((company) => getOverview(company)),
-      );
+  ) async {
+    final overviewList = await Future.wait(
+      companies.map(getOverview),
+    );
+
+    return overviewList.whereType<Overview>().toList();
+  }
 }
