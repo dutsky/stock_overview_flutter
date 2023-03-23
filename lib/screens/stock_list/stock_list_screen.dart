@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:stock_overview_flutter/data/overview_strings.dart';
 import 'package:stock_overview_flutter/domain/entity/list_state.dart';
 import 'package:stock_overview_flutter/domain/service/overview_service.dart';
@@ -13,7 +14,10 @@ class StockListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Stock Overview List')),
+      appBar: AppBar(
+        title: const Text('Stock Overview List'),
+        leading: BackButton(onPressed: () => SystemNavigator.pop()),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 20.0,
