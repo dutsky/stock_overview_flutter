@@ -1,15 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:stock_overview_flutter/data/api/overview_data.dart';
 import 'package:stock_overview_flutter/data/repository/overview_repository.dart';
 import 'package:stock_overview_flutter/domain/entity/list_state.dart';
+import 'package:stock_overview_flutter/domain/entity/overview.dart';
 
 /// Сервис для работы с Overview
 class OverviewService implements IOverviewService {
   final OverviewRepository _repository;
 
   @override
-  final ValueNotifier<List<OverviewData>> overviewList = ValueNotifier([]);
+  final ValueNotifier<List<Overview>> overviewList = ValueNotifier([]);
 
   @override
   final ValueNotifier<ListState> overviewListState =
@@ -17,10 +17,6 @@ class OverviewService implements IOverviewService {
 
   OverviewService(this._repository) {
     _init();
-  }
-
-  Future<List<OverviewData>> getCompanies(List<String> companies) async {
-    return _repository.getOverviewList(companies);
   }
 
   Future<void> _init() async {
@@ -55,8 +51,8 @@ class OverviewService implements IOverviewService {
 /// Интерфейс сервиса для работы с Overview.
 abstract class IOverviewService {
   /// Список компаний.
-  ValueListenable get overviewList;
+  ValueListenable<List<Overview>> get overviewList;
 
   /// Стейт списка компаний.
-  ValueListenable get overviewListState;
+  ValueListenable<ListState> get overviewListState;
 }
