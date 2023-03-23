@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_overview_flutter/data/api/overview_data.dart';
 
+/// Экран детальной информации о компании.
 class StockInfoScreen extends StatelessWidget {
   final OverviewData overview;
 

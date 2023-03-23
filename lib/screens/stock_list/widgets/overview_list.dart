@@ -3,6 +3,7 @@ import 'package:stock_overview_flutter/data/api/overview_data.dart';
 import 'package:stock_overview_flutter/screens/stock_info/stock_info_screen.dart';
 import 'package:stock_overview_flutter/screens/stock_list/widgets/overview_brief_tile.dart';
 
+/// Список компаний.
 class OverviewList extends StatelessWidget {
   final List<OverviewData> overviewList;
 

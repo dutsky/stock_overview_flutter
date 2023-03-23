@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stock_overview_flutter/data/overview_strings.dart';
 
+/// Плитка с короткой информации о товаре.
 class OverviewBriefTile extends StatelessWidget {
   final String name;
   final String capitalization;
@@ -15,8 +17,8 @@ class OverviewBriefTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text('Название: $name'),
-      subtitle: Text('Капитализация: $capitalization'),
+      title: Text('${OverviewStrings.name}: $name'),
+      subtitle: Text('${OverviewStrings.capitalization}: $capitalization'),
       onTap: onTap,
     );
   }

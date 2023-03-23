@@ -1,3 +1,4 @@
+/// Тип операции в API
 enum FunctionName {
   overview('OVERVIEW');
 
