@@ -24,9 +24,17 @@ class StockListScreen extends StatelessWidget {
             valueListenable: service.overviewListState,
             builder: (_, state, __) {
               if (state == ListState.data) {
-                return OverviewList(overviewList: service.overviewList.value);
+                return service.overviewList.value.isEmpty
+                    ? const Text(
+                        OverviewStrings.emptyMessage,
+                        textAlign: TextAlign.center,
+                      )
+                    : OverviewList(overviewList: service.overviewList.value);
               } else if (state == ListState.error) {
-                return const Text(OverviewStrings.errorMessage);
+                return const Text(
+                  OverviewStrings.errorMessage,
+                  textAlign: TextAlign.center,
+                );
               } else {
                 return const CircularProgressIndicator.adaptive();
               }
