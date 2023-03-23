@@ -7,11 +7,16 @@ const _apiKey = 'demo';
 class OverviewRepository {
   final OverviewApi _api;
 
-  OverviewRepository(this._api);
+  const OverviewRepository(this._api);
 
   Future<OverviewData> getOverview(String company) async => _api.getOverview(
         FunctionName.overview.value,
         company.toUpperCase(),
         _apiKey,
+      );
+
+  Future<List<OverviewData>> getOverviewList(List<String> companies) async =>
+      Future.wait(
+        companies.map((company) => getOverview(company)),
       );
 }
